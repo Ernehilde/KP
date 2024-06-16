@@ -20,7 +20,7 @@
         </div>
         <!-- Modal body -->
         <div class="p-4 md:p-5">
-            <form method="POST" action="{{ route('admin.regis') }}">
+            <form method="POST" action="{{ route('admin.regis.create') }}">
                 @csrf
 
                 <!-- Name -->

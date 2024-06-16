@@ -22,30 +22,30 @@
     <table id="table" class="table table-striped" style="width:100%">
         <thead>
             <tr>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="text-center align-middle">
                     No.
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="text-center align-middle">
                     Username
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="text-center align-middle">
                     Email
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="text-center align-middle">
                     Role
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="text-center align-middle">
                     Action
                 </th>
             </tr>
         </thead>
         <tbody>
                 @forelse ($lists as $list)
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $loop->iteration }}</td>
-                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $list->name }}</td>
-                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $list->email }}</td>
-                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $list->usertype }}</td>
+                <tr>
+                    <td class="text-center align-middle">{{ $loop->iteration }}</td>
+                    <td class="text-center align-middle">{{ $list->name }}</td>
+                    <td class="text-center align-middle">{{ $list->email }}</td>
+                    <td class="text-center align-middle">{{ $list->usertype }}</td>
                     <td class="flex items-center px-6 py-4">
                         <x-edit-user-btn :user='$list' />
                         <span class="ml-2"></span>

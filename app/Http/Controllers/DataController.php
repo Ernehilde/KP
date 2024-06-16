@@ -11,7 +11,7 @@ class DataController extends Controller
 {
     public function index() : View
     {
-        $dataInputs = DataItems::oldest()->paginate(10);
+        $dataInputs = DataItems::oldest()->get();
         return view('items.items', compact('dataInputs'));
     }
 
