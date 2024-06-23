@@ -2,9 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col d-flex align-items-center">
-                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                    {{ __('List Barang') }}
-                </h2>
+                <h1 class="ml-2 mb-2 text-2xl lg:text-xl text-gray-500 dark:text-gray-400 font-bold">List Barang</h1>
             </div>
             <div class="col-auto">
                 <div class="btn-group" role="group" aria-label="Basic example">
@@ -26,6 +24,7 @@
         <thead>
             <tr>
                 <th scope="col" class="text-center align-middle">No.</th>
+                <th scope="col" class="text-center align-middle">Tanggal</th>
                     <th scope="col" class="text-center align-middle">Picker</th>
                     <th scope="col" class="text-center align-middle">Wilayah</th>
                     <th scope="col" class="text-center align-middle">Kode Toko</th>
@@ -38,13 +37,22 @@
             @forelse ($dataInputs as $dataInput)
             <tr>
                 <td class="text-center align-middle">{{ $loop->iteration }}</td>
+                <td class="text-center align-middle">{{ $dataInput->tanggal }}</td>
                 <td class="text-center align-middle">{{ $dataInput->picker }}</td>
                 <td class="text-center align-middle">{{ $dataInput->wilayah }}</td>
                 <td class="text-center align-middle">{{ $dataInput->kode_toko }}</td>
                 <td class="text-center align-middle">{{ $dataInput->nama_toko }}</td>
                 <td class="text-center align-middle">{{ $dataInput->total_picker }}</td>
                 <td class="text-center align-middle">
-                    <x-show-item :dataItem="$dataInput" />
+                    <x-show-item :dataItem="$dataInput"
+                                 :totalHargaAki="$dataInput->totalHargaAki"
+                                 :totalHargaKardus="$dataInput->totalHargaKardus"
+                                 :totalHargabl14_17="$dataInput->totalHargabl14_17"
+                                 :totalHargabl12_13="$dataInput->totalHargabl12_13"
+                                 :totalHargaKrb="$dataInput->totalHargaKrb"
+                                 :totalHargabd="$dataInput->totalHargabd"
+                                 :totalHargabotol="$dataInput->totalHargabotol"
+                                 :totalHargaOli="$dataInput->totalHargaOli" />
                 </td>
                 </tr>
             @empty

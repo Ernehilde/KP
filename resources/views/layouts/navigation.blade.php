@@ -25,15 +25,7 @@
                     </a>
                     <a href="harga" class="nav_link {{ Request::is('admin/harga') ? 'active' : '' }}">
                         <i class='bx bx-bookmark nav_icon'></i>
-                        <span class="nav_name">Bookmark</span>
-                    </a>
-                    <a href="#" class="nav_link">
-                        <i class='bx bx-folder nav_icon'></i>
-                        <span class="nav_name">Files</span>
-                    </a>
-                    <a href="#" class="nav_link">
-                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
-                        <span class="nav_name">Stats</span>
+                        <span class="nav_name">Input Harga Barang</span>
                     </a>
                 </div>
             </div>
@@ -70,18 +62,6 @@
                     <a href="items" class="nav_link {{ Request::is('items') ? 'active' : '' }}">
                         <i class='bx bx-message-square-detail nav_icon'></i>
                         <span class="nav_name">Input Barang</span>
-                    </a>
-                    <a href="test" class="nav_link">
-                        <i class='bx bx-bookmark nav_icon'></i>
-                        <span class="nav_name">Bookmark</span>
-                    </a>
-                    <a href="#" class="nav_link">
-                        <i class='bx bx-folder nav_icon'></i>
-                        <span class="nav_name">Files</span>
-                    </a>
-                    <a href="#" class="nav_link">
-                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
-                        <span class="nav_name">Stats</span>
                     </a>
                 </div>
             </div>

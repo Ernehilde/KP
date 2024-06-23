@@ -10,7 +10,6 @@
             <tr>
                 <th>Nama Barang</th>
                 <th>Harga</th>
-                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
