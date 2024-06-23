@@ -47,8 +47,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 $('#table').DataTable();
-$('#edit-user-modal-{{ $user->id }}').on('shown.bs.modal', function () {
-    $('#name').trigger('focus');
-  });
+document.addEventListener('DOMContentLoaded', function() {
+    flatpickr("#tanggal", {
+        dateFormat: "Y-m-d",
+    });
+});
 
 

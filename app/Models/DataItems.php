@@ -10,6 +10,7 @@ class DataItems extends Model
     use HasFactory;
 
     protected $fillable = [
+        'tanggal',
         'picker',
         'wilayah',
         'total_picker',
@@ -24,4 +25,10 @@ class DataItems extends Model
         'botol',
         'kardus',
     ];
+
+    public function harga()
+{
+    return $this->hasOne(Harga::class, 'item_name', 'item_name');
 }
+}
+

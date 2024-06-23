@@ -23,6 +23,7 @@ class DataController extends Controller
     public function store(Request $request) : RedirectResponse
     {
         $request->validate([
+            'tanggal' => 'required|date',
             'picker' => 'required|string',
             'wilayah' => 'required|string',
             'total_picker' => 'required|integer',
@@ -39,6 +40,7 @@ class DataController extends Controller
         ]);
 
         DataItems::create([
+            'tanggal' => $request->tanggal,
             'picker' => $request->picker,
             'wilayah' => $request->wilayah,
             'total_picker' => $request->total_picker,

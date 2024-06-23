@@ -10,9 +10,11 @@
                         <a href="create"><i class="bx bx-plus"></i>
                             <span class="tooltip-text">Tambah Barang</span></a>
                     </button>
+                    <a href="print-items">
                     <button type="button" class="btn btn-success">
                         <i class="bx bx-download"></i>
                     </button>
+                </a>
                 </div>
             </div>
         </div>
@@ -22,6 +24,7 @@
         <thead>
             <tr>
                 <th scope="col" class="text-center align-middle">No.</th>
+                <th scope="col" class="text-center align-middle">Tanggal</th>
                     <th scope="col" class="text-center align-middle">Picker</th>
                     <th scope="col" class="text-center align-middle">Wilayah</th>
                     <th scope="col" class="text-center align-middle">Kode Toko</th>
@@ -35,13 +38,22 @@
             @forelse ($dataInputs as $dataInput)
             <tr>
                 <td class="text-center align-middle">{{ $loop->iteration }}</td>
+                <td class="text-center align-middle">{{ $dataInput->tanggal }}</td>
                 <td class="text-center align-middle">{{ $dataInput->picker }}</td>
                 <td class="text-center align-middle">{{ $dataInput->wilayah }}</td>
                 <td class="text-center align-middle">{{ $dataInput->kode_toko }}</td>
                 <td class="text-center align-middle">{{ $dataInput->nama_toko }}</td>
                 <td class="text-center align-middle">{{ $dataInput->total_picker }}</td>
                 <td class="text-center align-middle">
-                    <button>Show</button>
+                    <x-show-item :dataItem="$dataInput"
+                                 :totalHargaAki="$dataInput->totalHargaAki"
+                                 :totalHargaKardus="$dataInput->totalHargaKardus"
+                                 :totalHargabl14_17="$dataInput->totalHargabl14_17"
+                                 :totalHargabl12_13="$dataInput->totalHargabl12_13"
+                                 :totalHargaKrb="$dataInput->totalHargaKrb"
+                                 :totalHargabd="$dataInput->totalHargabd"
+                                 :totalHargabotol="$dataInput->totalHargabotol"
+                                 :totalHargaOli="$dataInput->totalHargaOli" />
                 </td>
                 <td class="flex items-center px-6 py-4">
                     <x-delete-items-btn :data='$dataInput'/>

@@ -1,4 +1,6 @@
 <x-app-layout>
+    <div class="h3 ml-5 fw-bold mb-3 underline">Dashboard</div>
+
         <div class="container">
             <div class="row ">
                 <div class="col-xl-4 col-lg-4">
@@ -34,7 +36,7 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4">
-                    <div class="card l-bg-red">
+                    <div class="card l-bg-blue-dark">
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="far fa-dot-circle"></i></div>
                             <div class="mb-4">
@@ -82,7 +84,7 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4">
-                    <div class="card l-bg-yellow">
+                    <div class="card l-bg-orange-dark">
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="fas fa-prescription-bottle"></i></div>
                             <div class="mb-4">
@@ -98,7 +100,7 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4">
-                    <div class="card l-bg-purple">
+                    <div class="card l-bg-orange-dark">
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="fas fa-wine-bottle"></i></div>
                             <div class="mb-4">
@@ -114,7 +116,7 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4">
-                    <div class="card l-bg-cian">
+                    <div class="card l-bg-orange-dark">
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="fas fa-cube"></i></div>
                             <div class="mb-4">

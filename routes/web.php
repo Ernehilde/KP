@@ -1,17 +1,14 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminDataController;
-use App\Http\Controllers\Admin\AdminItemController;
 use App\Http\Controllers\Admin\AdminRegisController;
 use App\Http\Controllers\Admin\AdminRegisViewController;
 use App\Http\Controllers\Admin\AdminDataViewController;
-use App\Http\Controllers\Admin\ItemController;
-use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Admin\HargaController;
 use App\Http\Controllers\DataController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DataViewController;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -26,13 +23,18 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
-route::get('admin/dashboard', [HomeController::class, 'index']);
 
 Route::middleware(['auth', 'userMiddleware'])->group(function () {
-    Route::get('dashboard', [UserController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [AdminDataController::class,'showDashboard'])->name('dashboard');
 });
 
 Route::resource('/items', DataController::class);
+Route::get('/create', [DataViewController::class, 'index'])->name('items.create-items');
+Route::get('/dashboard', [AdminDataController::class,'showDashboard']);
+Route::get('/print-items', [PDFController::class, 'showPrintForm'])->name('items.items.printForm');
+Route::post('/print-items', [AdminDataController::class, 'printPDF'])->name('items.items.print');
+
+
 
 Route::middleware(['auth', 'adminMiddleware'])->prefix('admin')->group(function () {
     Route::resource('/items', AdminDataController::class)->names([
@@ -46,7 +48,7 @@ Route::middleware(['auth', 'adminMiddleware'])->prefix('admin')->group(function 
     ]);
     Route::get('/create', [AdminDataViewController::class, 'index'])->name('items.create-items');
 
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
+    Route::get('/dashboard', [AdminDataController::class,'showDashboard'])->name('dashboard');
     Route::get('/users', [AdminRegisController::class, 'index'])->name('admin.user');
     Route::get('/regis', [AdminRegisViewController::class, 'index'])->name('admin.regis');
     Route::get('/register', [AdminRegisController::class, 'create'])->name('admin.regis.create');
@@ -54,4 +56,13 @@ Route::middleware(['auth', 'adminMiddleware'])->prefix('admin')->group(function 
     Route::get('/users/{id}', [AdminRegisController::class, 'edit'])->name('admin.users.edit');
     Route::put('/users/{id}', [AdminRegisController::class, 'update'])->name('admin.users.update');
     Route::delete('admin/users/{id}', [AdminRegisController::class, 'destroy'])->name('admin.user.delete');
+    Route::get('/print-items', [PDFController::class, 'showPrintForm'])->name('items.items.printForm');
+    Route::post('/print-items', [AdminDataController::class, 'printPDF'])->name('items.items.print');
+
+    Route::get('harga', [HargaController::class, 'index'])->name('admin.harga.index');
+    Route::get('harga/create', [HargaController::class, 'create'])->name('admin.harga.create');
+    Route::post('harga', [HargaController::class, 'store'])->name('admin.harga.store');
+    Route::get('harga/{price}/edit', [HargaController::class, 'edit'])->name('admin.harga.edit');
+    Route::put('harga/{price}', [HargaController::class, 'update'])->name('admin.harga.update');
+    Route::delete('harga/{price}', [HargaController::class, 'destroy'])->name('admin.harga.destroy');
 });

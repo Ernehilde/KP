@@ -10,9 +10,6 @@
                         <a href="regis"><i class="bx bx-plus"></i>
                             <span class="tooltip-text">Tambah User</span></a>
                     </button>
-                    <button type="button" class="btn btn-success">
-                        <i class="bx bx-download"></i>
-                    </button>
                 </div>
 
             </div>

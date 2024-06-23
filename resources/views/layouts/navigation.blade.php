@@ -1,9 +1,9 @@
 @if (Auth::user()->usertype == 'admin')
-<body id="body-pd">
-    <header class="header" id="header">
-        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+<body id="body-pd" class="body-pd">
+    <header class="header body-pd" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu bx-x' id="header-toggle"></i> </div>
     </header>
-    <div class="l-navbar" id="nav-bar">
+    <div class="l-navbar shows" id="nav-bar">
         <nav class="nav">
             <div>
                 <a href="{{ route('dashboard') }}" class="nav_logo">
@@ -23,7 +23,7 @@
                         <i class='bx bx-message-square-detail nav_icon'></i>
                         <span class="nav_name">Input Barang</span>
                     </a>
-                    <a href="#" class="nav_link">
+                    <a href="harga" class="nav_link {{ Request::is('admin/harga') ? 'active' : '' }}">
                         <i class='bx bx-bookmark nav_icon'></i>
                         <span class="nav_name">Bookmark</span>
                     </a>
@@ -52,10 +52,10 @@
 
 @if (Auth::user()->usertype == 'user')
 <body id="body-pd">
-    <header class="header" id="header">
-        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+    <header class="header body-pd" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu bx-x' id="header-toggle"></i> </div>
     </header>
-    <div class="l-navbar" id="nav-bar">
+    <div class="l-navbar shows" id="nav-bar">
         <nav class="nav">
             <div>
                 <a href="{{ route('dashboard') }}" class="nav_logo">
@@ -71,7 +71,7 @@
                         <i class='bx bx-message-square-detail nav_icon'></i>
                         <span class="nav_name">Input Barang</span>
                     </a>
-                    <a href="#" class="nav_link">
+                    <a href="test" class="nav_link">
                         <i class='bx bx-bookmark nav_icon'></i>
                         <span class="nav_name">Bookmark</span>
                     </a>
@@ -93,7 +93,6 @@
                 @csrf
             </form>
         </nav>
-
     </div>
 </body>
 @endif

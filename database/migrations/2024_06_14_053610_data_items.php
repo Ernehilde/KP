@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('data_items', function (Blueprint $table) {
             $table->id();
+            $table->date('tanggal');
             $table->string('picker');
             $table->string('wilayah');
             $table->integer('total_picker');
@@ -30,11 +31,8 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('data_input');
+        Schema::dropIfExists('data_items');
     }
 };
