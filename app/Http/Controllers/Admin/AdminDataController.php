@@ -54,8 +54,8 @@ class AdminDataController extends Controller
             'total_picker' => 'required|integer',
             'kode_toko' => 'required|string',
             'nama_toko' => 'required|string',
-            'bl14/17' => 'required|integer',
-            'bl12/13' => 'required|integer',
+            'bl14_17' => 'required|integer',
+            'bl12_13' => 'required|integer',
             'bd' => 'required|integer',
             'krb' => 'required|integer',
             'aki' => 'required|integer',
@@ -64,28 +64,10 @@ class AdminDataController extends Controller
             'kardus' => 'required|integer',
         ]);
 
-        $tanggal = \Carbon\Carbon::createFromFormat('Y-m-d', $validatedData['tanggal'])->toDateString();
+        DataItems::create($validatedData);
 
-        DataItems::create([
-            'tanggal' => $request->tanggal,
-            'picker' => $request->picker,
-            'wilayah' => $request->wilayah,
-            'total_picker' => $request->total_picker,
-            'kode_toko' => $request->kode_toko,
-            'nama_toko' => $request->nama_toko,
-            'bl14_17' => $request->bl14_17,
-            'bl12_13' => $request->bl12_13,
-            'bd' => $request->bd,
-            'krb' => $request->krb,
-            'aki' => $request->aki,
-            'oli' => $request->oli,
-            'botol' => $request->botol,
-            'kardus' => $request->kardus,
-        ]);
-
-        return redirect()->route('admin.items')->with(['success' => 'Data Berhasil Dimasukkan']);
-    }
-    public function show(DataItems $dataItem): View
+        return redirect()->route('admin.items.index')->with(['success' => 'Data Berhasil Dimasukkan']);
+    }    public function show(DataItems $dataItem): View
     {
         $hargabl14_17 = Harga::where('item_name', 'Ban Luar R14, 17')->first()->harga ?? 0;
         $hargabl12_13 = Harga::where('item_name', 'Ban Luar R12, 13')->first()->harga ?? 0;
@@ -111,7 +93,7 @@ class AdminDataController extends Controller
 
     public function edit(DataItems $dataItem): View
     {
-        return view('items.items', compact('dataItem'));
+        return view('admin.item', compact('dataItem'));
     }
 
     public function update(Request $request, DataItems $dataItem): RedirectResponse
@@ -205,13 +187,13 @@ class AdminDataController extends Controller
     $options->set('isPhpEnabled', true);
 
     $dompdf = new Dompdf($options);
-    $pdf = $dompdf->loadHtml(View2::make('items.print_items', compact(
+    $pdf = $dompdf->loadHtml(View2::make('admin.items.print_items', compact(
         'dataItems'
     ))->render());
 
     $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
-    return $dompdf->stream('laporan-data-items.pdf');
+    return $dompdf->stream('laporan-data-items'. $bulan .'.pdf');
 }
 
 

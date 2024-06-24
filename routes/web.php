@@ -8,11 +8,16 @@ use App\Http\Controllers\Admin\HargaController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\DataViewController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\Admin\AdminPDFController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
+});
+
+Route::middleware('auth')->get('/', function () {
+    return view('dashboard');
 });
 
 Route::middleware('auth')->group(function () {
@@ -52,7 +57,7 @@ Route::middleware(['auth', 'adminMiddleware'])->prefix('admin')->group(function 
         'destroy' => 'admin.items.destroy'
     ]);
 
-    Route::get('/create', [AdminDataViewController::class, 'index'])->name('admin.items.create-items');
+    Route::get('/create', [AdminDataViewController::class, 'index'])->name('admin.create-items');
     Route::get('/dashboard', [AdminDataController::class, 'showDashboard'])->name('admin.dashboard');
     Route::get('/users', [AdminRegisController::class, 'index'])->name('admin.user');
     Route::get('/regis', [AdminRegisViewController::class, 'index'])->name('admin.regis');
@@ -62,7 +67,7 @@ Route::middleware(['auth', 'adminMiddleware'])->prefix('admin')->group(function 
     Route::put('/users/{id}', [AdminRegisController::class, 'update'])->name('admin.users.update');
     Route::delete('/users/{id}', [AdminRegisController::class, 'destroy'])->name('admin.user.delete');
 
-    Route::get('/print-items', [PDFController::class, 'showPrintForm'])->name('admin.items.printForm');
+    Route::get('/print-items', [AdminPDFController::class, 'showPrintForm'])->name('admin.items.printForm');
     Route::post('/print-items', [AdminDataController::class, 'printPDF'])->name('admin.items.print');
 
     Route::get('/harga', [HargaController::class, 'index'])->name('admin.harga.index');

@@ -143,7 +143,7 @@ class DataController extends Controller
 
     $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
-    return $dompdf->stream('laporan-data-items.pdf');
+    return $dompdf->stream('laporan-data-items'. $bulan .'.pdf');
 }
 
 
